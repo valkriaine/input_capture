@@ -79,4 +79,5 @@ def start_monitor():
         listener.join()
 
 
+print("Type anything and press enter: ")
 start_monitor()
