@@ -65,9 +65,7 @@ def on_release(key):
     if key == keyboard.Key.enter:  # enter key pressed
         # Stop listener
         total_duration = time.time() - start_input  # end of all inputs
-        print("Total input time is {}".format(total_duration))
-        for x in range(len(data)):
-            print(data[x])
+        print_to_file(total_duration)
         return False
 
 
@@ -77,6 +75,20 @@ def start_monitor():
             on_press=on_press,
             on_release=on_release) as listener:
         listener.join()
+
+
+# print data to file
+def print_to_file(total_duration):
+    # print index
+    with open("output.txt", 'r') as fr:
+        x = len(fr.readlines())
+
+    # append data
+    with open("output.txt", "a") as fa:
+        print(x + 1, end=": ", file=fa)
+        for x in range(len(data)):
+            print(data[x], end=" ", file=fa)
+        print("Total input time: {}".format(total_duration), end="\n", file=fa)
 
 
 start_monitor()
