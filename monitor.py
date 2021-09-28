@@ -91,4 +91,5 @@ def print_to_file(total_duration):
         print("Total input time: {}".format(total_duration), end="\n", file=fa)
 
 
+print("Type anything and press enter: ")
 start_monitor()
